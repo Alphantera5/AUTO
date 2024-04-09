@@ -1,28 +1,22 @@
-const { spawn } = require("child_process");
-const path = require('path');
-
-const SCRIPT_FILE = "auto.js";
-const SCRIPT_PATH = path.join(__dirname, SCRIPT_FILE);
-
-
-function start() {
-    const main = spawn("node", [SCRIPT_PATH], {
-        cwd: __dirname,
-        stdio: "inherit",
-        shell: true
-    });
-
-    main.on("close", (exitCode) => {
-        if (exitCode === 0) {
-            console.log("Main process exited with code 0");
-        } else if (exitCode === 1) {
-            console.log("Main process exited with code 1. Restarting...");
-            start();
-        }  else {
-            console.error(`Main process exited with code ${exitCode}`);
-        }
-    });
-}
-
-start();
-
+function createConfig() {
+  const config = [{
+    masterKey: {
+      admin: ["100053549552408"],
+      botName: [],
+      adminName: [],
+      devMode: false,
+      database: false,
+      restartTime: 120
+    },
+    fcaOption: {
+      forceLogin: true,
+      listenEvents: true,
+      logLevel: "silent",
+      updatePresence: true,
+      selfListen: false,
+      userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64",
+      online: true,
+      autoMarkDelivery: false,
+      autoMarkRead: false
+    }
+  }];
