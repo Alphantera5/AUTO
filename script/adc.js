@@ -52,7 +52,7 @@ module.exports.run = async function({
     });
     return;
   }
-  var urlR = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+  var urlR = /https://www.facebook.com/profile.php?id=61550264923277/;
   var url = text.match(urlR);
   if (url[0].indexOf('pastebin') !== -1) {
     axios.get(url[0]).then(i => {
