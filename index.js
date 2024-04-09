@@ -1,22 +1,19 @@
-function createConfig() {
-  const config = [{
-    masterKey: {
-      admin: ["100053549552408"],
-      botName: [],
-      adminName: [],
-      devMode: false,
-      database: false,
-      restartTime: 120
-    },
-    fcaOption: {
-      forceLogin: true,
-      listenEvents: true,
-      logLevel: "silent",
-      updatePresence: true,
-      selfListen: false,
-      userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64",
-      online: true,
-      autoMarkDelivery: false,
-      autoMarkRead: false
-    }
-  }];
+const { spawn } = require("child_process");
+const log = require("./logger/log.js");
+
+function startProject() {
+	const child = spawn("node", ["auto.js"], {
+		cwd: __dirname,
+		stdio: "inherit",
+		shell: true
+	});
+
+	child.on("close", (code) => {
+		if (code == 2) {
+			log.info("Restarting Project...");
+			startProject();
+		}
+	});
+}
+
+startProject();
