@@ -26,7 +26,7 @@ module.exports.run = async function({
       data
     } = await axios.get(`https://api-soyeon.onrender.com/api?prompt=${encodeURIComponent(input)}`);
     const response = data.response;
-    api.sendMessage(response + '\n\nhttps://bit.ly/create-chatbot-me', event.threadID, event.messageID);
+    api.sendMessage(response + '\n\nTHIS BOT IS DEVELOP BY AJ CHICANO\n\nCreate your own autobot here https://auto-w6qo.onrender.com', event.threadID, event.messageID);
   } catch (error) {
     api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
   }
